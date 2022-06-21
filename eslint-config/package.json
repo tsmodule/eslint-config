@@ -1,0 +1,48 @@
+{
+  "name": "@tsmodule/eslint-config",
+  "version": "0.0.1",
+  "license": "MIT",
+  "type": "module",
+  "platform": "node",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./dist/index.js",
+    "./*": "./dist/*/index.js"
+  },
+  "scripts": {
+    "dev": "tsmodule dev",
+    "build": "tsmodule build",
+    "test": "ava",
+    "pretest": "tsmodule build --runtime-only",
+    "prepublishOnly": "yarn build && yarn test",
+    "lint": "eslint src --fix"
+  },
+  "ava": {
+    "timeout": 240000,
+    "files": [
+      "test/**/*.test.ts"
+    ],
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--no-warnings",
+      "--loader=@tsmodule/tsmodule"
+    ]
+  },
+  "devDependencies": {
+    "@tsmodule/tsmodule": "^40.0.9",
+    "@types/node": "^18.0.0",
+    "ava": "^4.3.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^8.18.0"
+  }
+}
