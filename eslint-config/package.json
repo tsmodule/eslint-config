@@ -22,7 +22,7 @@
     "lint": "eslint src --fix"
   },
   "ava": {
-    "timeout": 240000,
+    "timeout": "10m",
     "files": [
       "test/**/*.test.ts"
     ],
